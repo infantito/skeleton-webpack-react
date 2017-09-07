@@ -1,0 +1,12 @@
+@import '../utils/variables';
+
+.hello {
+  cursor: pointer;
+  font-weight: 300;
+  text-align: center;
+  user-select: none;
+  color: $color-special;
+  &:active {
+    transform: scale(0.75);
+  }
+}

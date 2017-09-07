@@ -1,0 +1,192 @@
+'use strict';
+
+const paths = require('./paths');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+/*
+  const glob = require('glob');
+  const PurifyCSSPlugin = require('purifycss-webpack');
+*/
+
+module.exports = {
+  context: paths.context,
+  entry: {
+    app: [paths.appIndexJs, paths.appStyle],
+    polyfill: ['babel-polyfill'],
+    vendor: paths.vendor
+  },
+  output: {
+    path: paths.appBuild,
+    filename: 'static/js/[name].bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        include: paths.context,
+        exclude: [/node_modules/],
+        use: ['babel-loader']
+      },
+      {
+        test: /\.s?(a|c)ss$/,
+        include: paths.context,
+        exclude: [/node_modules/],
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                minimize: true,
+                modules: true,
+                localIdentName: '[hash:base64:5]',
+                importLoaders: 1
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => [require('autoprefixer'), require('cssnano')]
+              }
+            },
+            'resolve-url-loader',
+            'sass-loader?sourceMap'
+          ],
+          publicPath: '../../'
+        })
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        include: paths.context,
+        exclude: [/node_modules/],
+        use: [
+          // 'file-loader?name=[hash:10].[ext]&outputPath=static/img/',
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000, // 4096 => 4kb
+              name: '[hash:10].[ext]',
+              outputPath: 'static/img/'
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+              mozjpeg: {
+                quality: 65,
+                progressive: true
+              },
+              optipng: {
+                optimizationLevel: 7
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              svgo: {
+                plugins: [
+                  {
+                    removeViewBox: false
+                  },
+                  {
+                    removeEmptyAttrs: false
+                  }
+                ]
+              },
+              gifsicle: {
+                interlaced: false
+              }
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(eot|ttf|otf|woff2?)(\?.*)?$/,
+        include: paths.context,
+        exclude: [/node_modules/],
+        use: 'file-loader?name=[name].[ext]&outputPath=static/css/fonts/'
+      }
+    ]
+  },
+  plugins: [
+    // Generates an `index.html` file with the <script> injected.
+    new HtmlWebpackPlugin({
+      title: paths.titleHtml,
+      favicon: paths.appFavicon,
+      inject: true,
+      hash: true,
+      template: paths.appHtml,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
+      }
+    }),
+    new ExtractTextPlugin({
+      filename: 'static/css/[name].css',
+      disable: false,
+      allChunks: true
+    }),
+    /* new PurifyCSSPlugin({
+      // Give paths to parse for rules. These should be absolute!
+      paths: glob.sync(
+        path.join(process.cwd(), 'src/*'),
+        { nodir: true }
+      ),
+      minimize: true,
+      purifyOptions: {
+        // Exclude some class names
+        whitelist: ['*purify*'],
+        info: true
+      }
+    }), */
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'static/js/vendor.js',
+      minChunks: 2
+    }),
+    new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: false, // By default false, Keep the sentences names
+      compress: {
+        screw_ie8: false,
+        dead_code: true,
+        drop_debugger: true,
+        warnings: false,
+        if_return: true,
+        booleans: true
+      },
+      output: {
+        screw_ie8: false,
+        beautify: false,
+        comments: false
+      },
+      exclude: [/\.min\.js$/gi]
+    })
+  ],
+  resolve: {
+    modules: [
+      paths.context,
+      'node_modules'
+    ],
+    extensions: ['.js', '.json', '.jsx']
+  },
+  performance: {
+    hints: false
+  }
+};

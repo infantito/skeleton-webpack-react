@@ -1,0 +1,19 @@
+.button {
+  outline: none;
+  cursor: pointer;
+  // border: 4px solid #9d9c;
+  border: 4px solid purple;
+  border-radius: 5px;
+  display: block;
+  margin: 2.5% auto;
+  padding: 2.5% 5%;
+  color: #fff;
+  font: 16px 'Comic Sans MS', serif;
+  background-color: hsl(134, 50%, 50%);
+  // background-color: purple;
+  &:hover {
+    background-color: transparent;
+    color: purple;
+    font-weight: 900;
+  }
+}
