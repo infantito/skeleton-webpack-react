@@ -1,4 +1,4 @@
-# React-webpack2-skeleton
+# Skeleton-Webpack-React
 
 React-webpack2-skeleton is a lightweight React boilerplate that uses Webpack2. url-loader, sass-loader, image-webpack-loader, babel-preset-env and react-hot-loader have been configured to this project by default.
 
@@ -52,31 +52,32 @@ You can execute the scripts below by `yarn run <script>` or `npm run <script>`.
 --------- vendor       # styles for vendors
 ```
 
-# Issue
-https://github.com/sass/node-sass/issues/1527
-https://github.com/tcoopman/image-webpack-loader#libpng-issues
+<summary><strong>Issue</strong></summary>
+<p>- https://github.com/sass/node-sass/issues/1527</p>
+<p>- https://github.com/tcoopman/image-webpack-loader#libpng-issues</p>
 
-Install-Requirements
-  Editorconfig
-  SublimeLinter
-  SublimeLinter-contrib-eslint
-  SublimeLinter-contrib-stylelint
-  Theme-Scheme for ES6
+<summary><strong>Install-Requirements</strong></summary>
+<p>Editorconfig</p>
+<p>SublimeLinter</p>
+<p>SublimeLinter-contrib-eslint</p>
+<p>SublimeLinter-contrib-stylelint</p>
+<p>Theme-Scheme for ES6</p>
 
-# Sadly
-Lacks Code-Splitting
-CSSNext
-BrowserSync [https://www.npmjs.com/package/browser-sync-webpack-plugin]
-Code-Splitting to React-Router (React-Router-Dom)
-Pass fonts to production
-Only pass methods used from babel-polyfill
-Condition the images optimization
-Research about gzipped
+<summary><strong>Sadly</strong></summary>
 
-# A little help
-https://github.com/velopert/react-webpack2-skeleton
+<p>Lacks Code-Splitting</p>
+<p>CSSNext</p>
+<p>BrowserSync [https://www.npmjs.com/package/browser-sync-webpack-plugin]</p>
+<p>Code-Splitting to React-Router (React-Router-Dom)</p>
+<p>Pass fonts to production</p>
+<p>Only pass methods used from babel-polyfill</p>
+<p>Condition the images optimization</p>
+<p>Research about gzipped</p>
 
-# OMG!
-https://www.reactenlightenment.com/
+#### A little help
+* https://github.com/velopert/react-webpack2-skeleton
 
-¡To code 💩! [\u{1f4a9}]
+#### OMG!
+* https://www.reactenlightenment.com/
+
+<p>¡To code 💩! [\u{1f4a9}]</p>
