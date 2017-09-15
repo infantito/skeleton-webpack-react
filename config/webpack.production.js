@@ -5,11 +5,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-/*
-  const glob = require('glob');
-  const PurifyCSSPlugin = require('purifycss-webpack');
-*/
-
 module.exports = {
   context: paths.context,
   entry: {
@@ -27,7 +22,7 @@ module.exports = {
         test: /\.jsx?$/,
         include: paths.context,
         exclude: [/node_modules/],
-        use: ['babel-loader']
+        use: ['babel-loader?cacheDirectory']
       },
       {
         test: /\.s?(a|c)ss$/,
@@ -59,7 +54,7 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        include: paths.context,
+        include: paths.appImages,
         exclude: [/node_modules/],
         use: [
           // 'file-loader?name=[hash:10].[ext]&outputPath=static/img/',
@@ -104,8 +99,8 @@ module.exports = {
         ]
       },
       {
-        test: /\.(eot|ttf|otf|woff2?)(\?.*)?$/,
-        include: paths.context,
+        test: /\.(eot|ttf|otf|svg|woff2?)(\?.*)?$/,
+        include: paths.appFonts,
         exclude: [/node_modules/],
         use: 'file-loader?name=[name].[ext]&outputPath=static/css/fonts/'
       }
@@ -137,19 +132,6 @@ module.exports = {
       disable: false,
       allChunks: true
     }),
-    /* new PurifyCSSPlugin({
-      // Give paths to parse for rules. These should be absolute!
-      paths: glob.sync(
-        path.join(process.cwd(), 'src/*'),
-        { nodir: true }
-      ),
-      minimize: true,
-      purifyOptions: {
-        // Exclude some class names
-        whitelist: ['*purify*'],
-        info: true
-      }
-    }), */
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false

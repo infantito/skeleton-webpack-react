@@ -1,8 +1,9 @@
 'use strict';
 
-const paths = require('./paths');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const paths = require('./paths');
+const localhost = require('./ip');
 
 // Settings by developer
 const DEV_SERVER_PORT = process.env.PORT || 3000;
@@ -13,15 +14,16 @@ module.exports = {
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
-    `webpack-dev-server/client?http://0.0.0.0:${DEV_SERVER_PORT}`,
+    `webpack-dev-server/client?http://${localhost}:${DEV_SERVER_PORT}`,
     'webpack/hot/only-dev-server',
     paths.appIndexJs,
     paths.appStyle
   ],
   output: {
     path: paths.appBuild,
-    filename: 'static/js/[name].bundle.js',
-    publicPath: `http://localhost:${DEV_SERVER_PORT}/`
+    filename: 'static/js/[name].bundle.js'
+    // When you want to show your assets with domain
+    // publicPath: `http://${localhost}:${DEV_SERVER_PORT}/`
   },
   module: {
     rules: [
@@ -29,7 +31,7 @@ module.exports = {
         test: /\.jsx?$/,
         include: paths.context,
         exclude: [/node_modules/],
-        use: ['babel-loader']
+        use: ['babel-loader?cacheDirectory']
       },
       {
         test: /\.s?(a|c)ss$/,
@@ -58,13 +60,53 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        include: paths.context,
+        include: paths.appImages,
         exclude: [/node_modules/],
-        use: ['url-loader', 'image-webpack-loader']
+        use: [
+          // 'file-loader?name=[hash:10].[ext]&outputPath=static/img/',
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000, // 4096 => 4kb
+              name: '[hash:10].[ext]',
+              outputPath: 'static/img/'
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+              mozjpeg: {
+                quality: 65,
+                progressive: true
+              },
+              optipng: {
+                optimizationLevel: 7
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              svgo: {
+                plugins: [
+                  {
+                    removeViewBox: false
+                  },
+                  {
+                    removeEmptyAttrs: false
+                  }
+                ]
+              },
+              gifsicle: {
+                interlaced: false
+              }
+            }
+          }
+        ]
       },
       {
-        test: /\.(eot|ttf|otf|woff2?)(\?.*)?$/,
-        include: paths.context,
+        test: /\.(eot|ttf|otf|svg|woff2?)(\?.*)?$/,
+        include: paths.appFonts,
         exclude: [/node_modules/],
         use: 'file-loader?name=[name].[ext]&outputPath=static/css/fonts/'
       }
@@ -80,6 +122,10 @@ module.exports = {
       favicon: paths.appFavicon,
       inject: true,
       template: paths.appHtml
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
     })
   ],
   resolve: {
@@ -93,8 +139,12 @@ module.exports = {
     contentBase: paths.context,
     // publicPath: `http://0.0.0.0:${DEV_SERVER_PORT}`,
     compress: true,
+    host: '0.0.0.0',
+    disableHostCheck: true,
     historyApiFallback: true,
     port: DEV_SERVER_PORT,
+    useLocalIp: true,
+    headers: { 'Access-Control-Allow-Origin': '*' },
     // Don't refresh if hot loading fails. Good while
     // implementing the client interface.
     // hotOnly: true,

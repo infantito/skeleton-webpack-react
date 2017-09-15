@@ -6,7 +6,7 @@ import Style from '../styles/components/_Image.scss';
 const ImageNode = () => (
   <img
     src={ImageSvgNode}
-    alt="Nodejsx SVG"
+    alt="Nodejs SVG"
     className={`${Style.root__image} ${Style['root__image--default']}`}
   />
 );

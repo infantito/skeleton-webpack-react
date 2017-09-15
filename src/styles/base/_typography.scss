@@ -1,1 +1,15 @@
-@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+// Font Path
+// --------------------------
+$font-path: 'fonts';
+$version: 1.0;
+
+@font-face {
+  font-family: 'FuturaStd-Book';
+  src:url("#{$font-path}/FuturaStd-Book.eot?v=#{$version}");
+  src:url("#{$font-path}/FuturaStd-Book.eot?v=#{$version}#iefix") format("embedded-opentype"),
+      url("#{$font-path}/FuturaStd-Book.ttf?v=#{$version}") format("truetype"),
+      url("#{$font-path}/FuturaStd-Book.woff?v=#{$version}") format("woff"),
+      url("#{$font-path}/FuturaStd-Book.svg?v=#{$version}#headline") format("svg");
+  font-weight: 300;
+  font-style: normal;
+}

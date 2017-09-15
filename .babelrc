@@ -1,4 +1,5 @@
 {
+  "comments": false,
   "env": {
     "development": {
       // same configuration with react-app preset,
