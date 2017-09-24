@@ -102,7 +102,11 @@ module.exports = {
         test: /\.(eot|ttf|otf|svg|woff2?)(\?.*)?$/,
         include: paths.appFonts,
         exclude: [/node_modules/],
-        use: 'file-loader?name=[name].[ext]&outputPath=static/css/fonts/'
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'static/fonts/'
+        }
       }
     ]
   },

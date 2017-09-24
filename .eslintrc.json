@@ -67,7 +67,7 @@
       "builtinGlobals": true
     }],
     "wrap-iife": [2, "inside"],
-    "max-len": [2, 130, 2, {"ignoreUrls": true}],
+    "max-len": [2, 120, 2, {"ignoreUrls": true}],
     "class-methods-use-this": 0,
 
     /**

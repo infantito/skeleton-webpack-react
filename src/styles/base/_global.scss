@@ -1,3 +1,5 @@
+// @import "../utils/variables";
+
 body, html {
   height: 100%;
 }
@@ -7,6 +9,7 @@ body {
     margin: 0;
   }
   h1 {
+    // font-family: $font-text;
     // color: #9d9c;
   }
   text-align: center;
