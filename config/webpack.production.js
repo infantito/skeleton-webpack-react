@@ -43,11 +43,20 @@ module.exports = {
             {
               loader: 'postcss-loader',
               options: {
-                plugins: () => [require('autoprefixer'), require('cssnano')]
+                plugins: () => [
+                  require('autoprefixer'),
+                  require('cssnano')
+                ]
               }
             },
             'resolve-url-loader',
-            'sass-loader?sourceMap'
+            'sass-loader?sourceMap',
+            {
+              loader: 'stylefmt-loader',
+              options: {
+                config: '.stylelintrc'
+              }
+            }
           ],
           publicPath: '../../'
         })

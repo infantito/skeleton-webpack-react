@@ -30,6 +30,7 @@ ehthumbs.db
 Icon?
 Thumbs.db
 yarn.lock
+# !yarn.lock
 yarn-debug.log*
 yarn-error.log*
 /.changelog

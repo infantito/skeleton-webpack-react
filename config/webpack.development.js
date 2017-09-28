@@ -6,7 +6,7 @@ const paths = require('./paths');
 const localhost = require('./ip');
 
 // Settings by developer
-const DEV_SERVER_PORT = process.env.PORT || 3000;
+const DEV_SERVER_PORT = process.env.PORT || 8080;
 
 module.exports = {
   devtool: 'eval-cheap-module-source-map',
@@ -143,13 +143,9 @@ module.exports = {
     disableHostCheck: true,
     historyApiFallback: true,
     port: DEV_SERVER_PORT,
-    useLocalIp: true,
-    headers: { 'Access-Control-Allow-Origin': '*' },
-    // Don't refresh if hot loading fails. Good while
-    // implementing the client interface.
-    // hotOnly: true,
-    inline: true, // If hotOnly ys false, So inline must be false
-    // If you want to refresh on errors too, set
+    useLocalIp: false,
+    // headers: { 'Access-Control-Allow-Origin': '*' },
+    inline: true,
     hot: true,
     noInfo: false,
     open: true,
