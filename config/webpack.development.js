@@ -5,25 +5,22 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('./paths');
 const localhost = require('./ip');
 
-// Settings by developer
-const DEV_SERVER_PORT = process.env.PORT || 8080;
-
 module.exports = {
   devtool: 'eval-cheap-module-source-map',
   context: paths.context,
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
-    `webpack-dev-server/client?http://${localhost}:${DEV_SERVER_PORT}`,
     'webpack/hot/only-dev-server',
+    'webpack-hot-middleware/client',
     paths.appIndexJs,
     paths.appStyle
   ],
   output: {
     path: paths.appBuild,
-    filename: 'static/js/[name].bundle.js'
+    filename: 'static/js/[name].bundle.js',
     // When you want to show your assets with domain
-    // publicPath: `http://${localhost}:${DEV_SERVER_PORT}/`
+    publicPath: `http://${localhost}:${paths.port}/`
   },
   module: {
     rules: [
@@ -134,25 +131,5 @@ module.exports = {
       'node_modules'
     ],
     extensions: ['.js', '.json', '.jsx']
-  },
-  devServer: {
-    contentBase: paths.context,
-    // publicPath: `http://0.0.0.0:${DEV_SERVER_PORT}`,
-    compress: true,
-    host: '0.0.0.0',
-    disableHostCheck: true,
-    historyApiFallback: true,
-    port: DEV_SERVER_PORT,
-    useLocalIp: false,
-    // headers: { 'Access-Control-Allow-Origin': '*' },
-    inline: true,
-    hot: true,
-    noInfo: false,
-    open: true,
-    stats: 'errors-only',
-    overlay: {
-      warnings: true,
-      errors: true
-    }
   }
 };

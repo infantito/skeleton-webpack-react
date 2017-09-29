@@ -10,7 +10,7 @@
     "clean": "rimraf build",
     "start:prod": "cross-env BABEL_ENV=production && cross-env NODE_ENV=production",
     "start:dev": "cross-env BABEL_ENV=development && cross-env NODE_ENV=development",
-    "start": "npm run start:dev && webpack-dev-server --config=config/webpack.development.js",
+    "start": "npm run start:dev && node server.js",
     "build": "npm run clean && npm run start:prod && webpack --display-error-details -p --config=config/webpack.production.js",
     "lint": "eslint src/"
   },
@@ -27,6 +27,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-app": "^3.0.2",
     "babel-runtime": "^6.23.0",
+    "browser-sync": "^2.18.13",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "eslint": "^4.7.2",
@@ -53,7 +54,9 @@
     "stylelint-config-recommended": "^1.0.0",
     "url-loader": "^0.5.9",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.8.2"
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-dev-server": "^2.8.2",
+    "webpack-hot-middleware": "^2.19.1"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
