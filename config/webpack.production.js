@@ -62,7 +62,7 @@ module.exports = {
         })
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(gif|png|jpe?g|svg|webp)$/i,
         include: paths.appImages,
         exclude: [/node_modules/],
         use: [
@@ -102,6 +102,10 @@ module.exports = {
               },
               gifsicle: {
                 interlaced: false
+              },
+              // Specifying webp here will create a WEBP version of your JPG/PNG images
+              webp: {
+                quality: 75
               }
             }
           }

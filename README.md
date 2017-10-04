@@ -67,13 +67,10 @@ You can execute the scripts below by `yarn run <script>` or `npm run <script>`.
 
 <p>Lacks Code-Splitting</p>
 <p>CSSNext</p>
-<p>BrowserSync [https://www.npmjs.com/package/browser-sync-webpack-plugin]</p>
 <p>Code-Splitting to React-Router (React-Router-Dom)</p>
 <p>Only pass methods used from babel-polyfill</p>
-<p>Condition the images optimization</p>
 <p>Research about gzipped</p>
 <p>Fix Paths [../../]</p>
-<p>Fix localhost/ip at OSX. (at Android good)</p>
 
 #### A little help
 * https://github.com/velopert/react-webpack2-skeleton
