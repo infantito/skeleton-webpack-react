@@ -1,6 +1,6 @@
 # Skeleton-Webpack-React
 
-React-webpack2-skeleton is a lightweight React boilerplate that uses Webpack2. url-loader, sass-loader, image-webpack-loader, babel-preset-env and react-hot-loader have been configured to this project by default.
+React-webpack2-skeleton is a lightweight React boilerplate that uses Webpack2. url-loader, postcss-loader, image-webpack-loader, babel-preset-env and react-hot-loader have been configured to this project by default.
 
 ## Requirement
 
@@ -45,7 +45,7 @@ You can execute the scripts below by `yarn run <script>` or `npm run <script>`.
 ----- components       # directory for presentational components
 ----- containers       # directory for container components
 ----- images           # directory for images
------ styles           # directory for appliaction styles (in scss format)
+----- styles           # directory for appliaction styles (in pcss format)
 --------- base         # global styles
 --------- components   # styles for each components
 --------- utils        # styles for variables
@@ -53,7 +53,6 @@ You can execute the scripts below by `yarn run <script>` or `npm run <script>`.
 ```
 
 <summary><strong>Issue</strong></summary>
-<p>- https://github.com/sass/node-sass/issues/1527</p>
 <p>- https://github.com/tcoopman/image-webpack-loader#libpng-issues</p>
 
 <summary><strong>Install-Requirements</strong></summary>

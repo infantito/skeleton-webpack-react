@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Style from '../styles/components/_Button.scss';
+import Style from '../styles/components/_Button.pcss';
 
 export default class Button extends Component {
   constructor() {

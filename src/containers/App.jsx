@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Hello from '../components/Hello.jsx';
 import Button from '../components/Button.jsx';
 import ImageNode from '../components/ImageNode.jsx';
-import Style from '../styles/components/_Image.scss';
+import Style from '../styles/components/_Image.pcss';
 
 class App extends Component {
   constructor(props) {

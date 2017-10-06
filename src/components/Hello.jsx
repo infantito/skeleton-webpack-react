@@ -1,5 +1,5 @@
 import React from 'react';
-import Style from '../styles/components/_Hello.scss';
+import Style from '../styles/components/_Hello.pcss';
 
 // React Stateless Functional Components
 const Hello = ({ name, onCounter }) => (

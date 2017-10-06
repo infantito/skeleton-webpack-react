@@ -8,7 +8,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   context: paths.context,
   entry: {
-    app: [paths.appIndexJs, paths.appStyle],
+    app: [paths.appIndexJs, paths.appMainStyle],
     polyfill: ['babel-polyfill'],
     vendor: paths.vendor
   },
@@ -25,8 +25,8 @@ module.exports = {
         use: ['babel-loader?cacheDirectory']
       },
       {
-        test: /\.s?(a|c)ss$/,
-        include: paths.context,
+        test: /\.(p|c)?css$/,
+        include: paths.appStyle,
         exclude: [/node_modules/],
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -40,17 +40,7 @@ module.exports = {
                 importLoaders: 1
               }
             },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => [
-                  require('autoprefixer'),
-                  require('cssnano')
-                ]
-              }
-            },
-            'resolve-url-loader',
-            'sass-loader?sourceMap',
+            'postcss-loader',
             {
               loader: 'stylefmt-loader',
               options: {

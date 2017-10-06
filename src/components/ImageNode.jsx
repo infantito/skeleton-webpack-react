@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageSvgNode from '../images/nodejs.svg';
-import Style from '../styles/components/_Image.scss';
+import Style from '../styles/components/_Image.pcss';
 
 // React Stateless Functional Components
 const ImageNode = () => (

@@ -14,7 +14,7 @@ module.exports = {
     'webpack/hot/only-dev-server',
     'webpack-hot-middleware/client',
     paths.appIndexJs,
-    paths.appStyle
+    paths.appMainStyle
   ],
   output: {
     path: paths.appBuild,
@@ -31,8 +31,8 @@ module.exports = {
         use: ['babel-loader?cacheDirectory']
       },
       {
-        test: /\.s?(a|c)ss$/,
-        include: paths.context,
+        test: /\.(p|c)?css$/,
+        include: paths.appStyle,
         exclude: [/node_modules/],
         use: [
           'style-loader',
@@ -46,13 +46,7 @@ module.exports = {
               importLoaders: 1
             }
           },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [require('autoprefixer')]
-            }
-          },
-          'sass-loader'
+          'postcss-loader'
         ]
       },
       {
@@ -109,7 +103,11 @@ module.exports = {
         test: /\.(eot|ttf|otf|svg|woff2?)(\?.*)?$/,
         include: paths.appFonts,
         exclude: [/node_modules/],
-        use: 'file-loader?name=[name].[ext]&outputPath=static/fonts/'
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'static/fonts/'
+        }
       }
     ]
   },
