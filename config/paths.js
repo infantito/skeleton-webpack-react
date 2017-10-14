@@ -9,7 +9,7 @@ function resolvePath(relativePath) {
 
 module.exports = {
   context: resolvePath('src/'),
-  appIndexJs: resolvePath('src/index.js'),
+  appIndexJs: resolvePath('src/index.jsx'),
   appStyle: resolvePath('src/styles/'),
   appMainStyle: resolvePath('src/styles/main.pcss'),
   appHtml: resolvePath('public/index.html'),

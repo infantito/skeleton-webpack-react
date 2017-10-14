@@ -5,13 +5,14 @@ import App from './containers/App.jsx';
 
 const rootEl = document.getElementById('root');
 
-const render = Component =>
+const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
       <Component />
     </AppContainer>,
     rootEl
   );
+};
 
 render(App);
 

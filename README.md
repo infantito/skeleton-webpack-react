@@ -5,7 +5,7 @@ React-webpack2-skeleton is a lightweight React boilerplate that uses Webpack2. u
 ## Requirement
 
 - Node `^6.0.0`
-- yarn `^0.2x.x` or npm `^3.x.x` 
+- yarn `>= ^0.2x.x` or npm `>= ^3.x.x` 
 
 ## Getting started
 
@@ -33,7 +33,7 @@ You can execute the scripts below by `yarn run <script>` or `npm run <script>`.
 
 | Command | Description                                                   |
 |---------|---------------------------------------------------------------|
-| start   | Starts webpack development server; served at `localhost:3000` |
+| start   | Starts webpack development server; served at `localhost:8080` |
 | build   | Bundles the source in `~/build` directory                     |
 
 ## Directory structure
@@ -65,11 +65,12 @@ You can execute the scripts below by `yarn run <script>` or `npm run <script>`.
 <summary><strong>Sadly</strong></summary>
 
 <p>Lacks Code-Splitting</p>
-<p>CSSNext</p>
 <p>Code-Splitting to React-Router (React-Router-Dom)</p>
 <p>Only pass methods used from babel-polyfill</p>
 <p>Research about gzipped</p>
 <p>Fix Paths [../../]</p>
+<p>Fix paths at development IP/localhost [without that]</p>
+<p>Fix IP like localhost [0.0.0.0]</p>
 
 #### A little help
 * https://github.com/velopert/react-webpack2-skeleton

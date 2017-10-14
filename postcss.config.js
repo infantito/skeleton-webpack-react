@@ -3,6 +3,7 @@ module.exports = {
   plugins: {
     'precss': {},
     'postcss-import': {},
+    'postcss-flexbugs-fixes': {},
     'postcss-hexrgba': {},
     'postcss-cssnext': {},
     'postcss-browser-reporter': {},

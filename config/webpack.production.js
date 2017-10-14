@@ -148,7 +148,9 @@ module.exports = {
       filename: 'static/js/vendor.js',
       minChunks: 2
     }),
-    new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       mangle: false, // By default false, Keep the sentences names
@@ -159,6 +161,9 @@ module.exports = {
         warnings: false,
         if_return: true,
         booleans: true
+        // global_defs: {
+        //   __REACT_HOT_LOADER__: undefined // eslint-disable-line no-undefined
+        // }
       },
       output: {
         screw_ie8: false,
