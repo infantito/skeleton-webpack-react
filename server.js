@@ -52,9 +52,5 @@ browserSync({
   host: ip,
   port: paths.port,
   cors: true,
-  notify: false,
-
-  // no need to watch '*.js' here, webpack will take care of it for us,
-  // including full page reloads if HMR won't work
-  files: [paths.Images, paths.IndexJs, paths.appIndexStyle]
+  notify: false
 });

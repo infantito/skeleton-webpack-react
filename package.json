@@ -1,7 +1,7 @@
 {
-  "name": "react-webpack2-skeleton",
+  "name": "skeleton-webpack-react",
   "version": "1.0.0",
-  "description": "Get started with React with Webpack2",
+  "description": "Get started with React with Webpack",
   "main": "index.js",
   "keywords": [],
   "author": "Daniel Infante <danielinfantito61@gmail.com>",
@@ -50,11 +50,11 @@
     "stylefmt-loader": "^1.2.3",
     "stylelint": "^8.1.1",
     "stylelint-config-recommended": "^1.0.0",
-    "url-loader": "^0.5.9",
-    "webpack": "^3.6.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.8.1",
     "webpack-dev-middleware": "^1.12.0",
-    "webpack-dev-server": "^2.8.2",
-    "webpack-hot-middleware": "^2.19.1"
+    "webpack-dev-server": "^2.9.2",
+    "webpack-hot-middleware": "^2.20.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",

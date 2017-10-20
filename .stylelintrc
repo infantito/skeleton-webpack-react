@@ -1,9 +1,24 @@
 {
   "extends": "stylelint-config-recommended",
   "rules": {
+    "block-closing-brace-newline-after": "always",
+    "block-closing-brace-newline-before": "always",
+    "block-opening-brace-newline-after": "always",
+    "block-opening-brace-space-before": [
+      "always", { 
+        "ignoreAtRules": ["for"] 
+      }
+    ],
+    "declaration-block-semicolon-newline-after": "always",
+    "indentation": 2,
     "no-duplicate-selectors": true,
+    "rule-empty-line-before": ["always", {
+      "except": "first-nested"
+    }],
+    "selector-list-comma-newline-after": "always",
     "selector-pseudo-class-no-unknown": [true, {
       "ignorePseudoClasses": ["global"]
-    }]
+    }],
+    "selector-type-case": "lower"
   }
 }

@@ -21,7 +21,7 @@ tab_width = 2
 max_line_length = 80
 
 # change these settings to your preference
-[{*.js, *.jsx, *.css, *.scss, *.sass, *.html, *.css, *.pug, *.jade}]
+[{*.js, *.jsx, *.css, *.scss, *.sass, *.html, *.css, *.pug, *.jade, *.pcss}]
 indent_style = space
 indent_style = 2
 
