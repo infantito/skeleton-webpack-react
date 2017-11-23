@@ -1,32 +1,32 @@
 'use strict';
 
-const paths = require('./paths');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpackMerge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const baseConfig = require('./webpack.config.base.js');
+const {
+  build,
+  context,
+  images,
+  script,
+  style,
+  vendor
+} = require('./paths');
 
-module.exports = {
-  context: paths.context,
+module.exports = webpackMerge(baseConfig, {
   entry: {
-    app: [paths.appIndexJs, paths.appMainStyle],
-    polyfill: ['babel-polyfill'],
-    vendor: paths.vendor
+    app: [script, style],
+    vendor
   },
   output: {
-    path: paths.appBuild,
-    filename: 'static/js/[name].bundle.js'
+    path: build,
+    filename: 'js/[name].bundle.js'
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        include: paths.context,
-        exclude: [/node_modules/],
-        use: ['babel-loader?cacheDirectory']
-      },
-      {
-        test: /\.(p|c)?css$/,
-        include: paths.appStyle,
+        test: /\.(p|s)?css$/,
+        include: context,
         exclude: [/node_modules/],
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -48,21 +48,22 @@ module.exports = {
               }
             }
           ],
-          publicPath: '../../'
+          publicPath: '../'
         })
       },
+      // If you need optimized images, enable this
       {
         test: /\.(gif|png|jpe?g|svg|webp)$/i,
-        include: paths.appImages,
+        include: images,
         exclude: [/node_modules/],
         use: [
-          // 'file-loader?name=[hash:10].[ext]&outputPath=static/img/',
+          // 'file-loader?name=[hash:10].[ext]&outputPath=img/',
           {
             loader: 'url-loader',
             options: {
-              limit: 10000, // 4096 => 4kb
+              limit: 4096,
               name: '[hash:10].[ext]',
-              outputPath: 'static/img/'
+              outputPath: 'img/'
             }
           },
           {
@@ -101,41 +102,35 @@ module.exports = {
           }
         ]
       },
+      // If you don't need optimized images, enable this
+      /*
       {
-        test: /\.(eot|ttf|otf|svg|woff2?)(\?.*)?$/,
-        include: paths.appFonts,
+        test: /\.(gif|png|jpe?g|svg|webp)$/i,
+        include: images,
         exclude: [/node_modules/],
-        loader: 'file-loader',
+        loader: 'file-loader?name=[name].[ext]&outputPath=img/'
+      },
+      */
+      {
+        enforce: 'pre',
+        test: /\.(jsx?|json)$/,
+        include: context,
+        exclude: [/node_modules/],
+        loader: 'prettier-loader',
         options: {
-          name: '[name].[ext]',
-          outputPath: 'static/fonts/'
+          bracketSpacing: true,
+          printWidth: 80,
+          semi: true,
+          singleQuote: true,
+          tabWidth: 2,
+          useTabs: false
         }
       }
     ]
   },
   plugins: [
-    // Generates an `index.html` file with the <script> injected.
-    new HtmlWebpackPlugin({
-      title: paths.titleHtml,
-      favicon: paths.appFavicon,
-      inject: true,
-      hash: true,
-      template: paths.appHtml,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
-      }
-    }),
     new ExtractTextPlugin({
-      filename: 'static/css/[name].css',
+      filename: 'css/[name].css',
       disable: false,
       allChunks: true
     }),
@@ -143,21 +138,15 @@ module.exports = {
       minimize: true,
       debug: false
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'static/js/vendor.js',
-      minChunks: 2
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      mangle: false, // By default false, Keep the sentences names
+      mangle: false,
       compress: {
         screw_ie8: false,
+        unsafe_proto: true,
         dead_code: true,
         drop_debugger: true,
+        // drop_console: true,
         warnings: false,
         if_return: true,
         booleans: true
@@ -173,14 +162,7 @@ module.exports = {
       exclude: [/\.min\.js$/gi]
     })
   ],
-  resolve: {
-    modules: [
-      paths.context,
-      'node_modules'
-    ],
-    extensions: ['.js', '.json', '.jsx']
-  },
   performance: {
     hints: false
   }
-};
+});

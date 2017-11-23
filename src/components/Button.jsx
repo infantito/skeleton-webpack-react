@@ -9,7 +9,7 @@ export default class Button extends Component {
   }
 
   onClickCounter() {
-  // onClickCounter = () => {
+    // onClickCounter = () => {
     const bar = () => 'baz';
     let test = { a: 1, b: 2, e: 2.5 };
     console.log({ c: 3, d: 4, ...test });
@@ -18,7 +18,12 @@ export default class Button extends Component {
 
   render() {
     return (
-      <input type="button" value="Click me" className={Style.button} onClick={this.onClickCounter} />
+      <input
+        type="button"
+        value="Click me"
+        className={Style.button}
+        onClick={this.onClickCounter}
+      />
     );
   }
 }

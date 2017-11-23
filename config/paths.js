@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const fs = require('fs');
 
@@ -9,15 +11,13 @@ function resolvePath(relativePath) {
 
 module.exports = {
   context: resolvePath('src/'),
-  appIndexJs: resolvePath('src/index.jsx'),
-  appStyle: resolvePath('src/styles/'),
-  appMainStyle: resolvePath('src/styles/main.pcss'),
-  appHtml: resolvePath('public/index.html'),
-  appFonts: resolvePath('src/fonts/'),
-  appImages: resolvePath('src/images/'),
-  appFavicon: resolvePath('public/favicon.ico'),
-  titleHtml: 'Skeleton ReactJs',
-  vendor: ['react', 'react-dom'],
-  appBuild: resolvePath('build'),
+  script: resolvePath('src/index.jsx'),
+  style: resolvePath('src/styles/style.pcss'),
+  template: resolvePath('public/index.html'),
+  fonts: resolvePath('src/fonts/'),
+  images: resolvePath('src/images/'),
+  favicon: resolvePath('public/favicon.ico'),
+  vendor: ['react', 'react-dom', 'babel-polyfill'],
+  build: resolvePath('build'),
   port: process.env.PORT || 8080
 };

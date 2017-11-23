@@ -26,7 +26,7 @@ class App extends Component {
 
   render() {
     return (
-      <section id={Style.root_section}>
+      <section id={Style.root__section}>
         <Hello
           name={`React with Webpack2 (${this.state.number})`}
           onCounter={this.onCounter}

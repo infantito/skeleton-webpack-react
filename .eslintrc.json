@@ -32,12 +32,14 @@
      * ES6
      */
     "prefer-const": 0,
+    "prefer-template": 1,
 
     /**
      * Variables
      */
     "no-shadow": [2, {
-      "builtinGlobals": true
+      "builtinGlobals": true,
+      "allow": ["require", "self", "name", "module"]
     }],
     "no-unused-vars": [2, {
       "vars": "all",
@@ -48,8 +50,18 @@
     /**
      * Possible errors
      */
-    "comma-dangle": [2, "never"],
+    "comma-dangle": [2, {
+      "arrays": "only-multiline",
+      "objects": "only-multiline"
+    }],
     "no-inner-declarations": [2, "both"],
+    "no-multi-spaces": ["error", {
+      "exceptions": {
+        "ImportDeclaration": true,
+        "VariableDeclarator": true
+      }
+    }],
+    "function-paren-newline": ["warn", { "minItems": 4 }],
 
     /**
      * Best practices
@@ -110,7 +122,8 @@
     /**
      * Import
      */
-    "import/extensions": ["error", { "jsx": "always", "scss": "always", "sass": "always", "css": "always" }],
+    "import/extensions": ["error", { "jsx": "always", "scss": "always", "pcss": "always", "css": "always" }],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": true, "peerDependencies": false}],
 
     /**
      * JSX
@@ -138,11 +151,6 @@
         "/^render.+$/",
         "render"
       ]
-    }],
-
-    /**
-     *  Import plugin
-     */
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": true, "peerDependencies": false}]
+    }]
   }
 }

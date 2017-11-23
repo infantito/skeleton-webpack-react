@@ -3,13 +3,13 @@
 /* Using :global keyword when you won't want your selector parses  [hash] */
 :global(#root) {
   .hello {
+    color: $color-special;
     cursor: pointer;
     font-family: $font-text;
-    font-weight: 300;
     font-size: 25px;
+    font-weight: 300;
     text-align: center;
     user-select: none;
-    color: $color-special;
 
     &:active {
       transform: scale(0.75);

@@ -10,17 +10,17 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 /**
  * Require ./webpack.config.js and make a bundler from it
  */
-const webpackConfig = require('./config/webpack.development');
+const webpackConfig = require('./config/webpack.config.development');
+const { port } = require('./config/paths');
+
 const bundler = webpack(webpackConfig);
-const paths = require('./config/paths');
-const ip = require('./config/ip');
 
 /**
  * Run Browsersync and use middleware for Hot Module Replacement
  */
 browserSync({
   server: {
-    baseDir: paths.context,
+    baseDir: 'build',
 
     middleware: [
       webpackDevMiddleware(bundler, {
@@ -46,11 +46,10 @@ browserSync({
       webpackHotMiddleware(bundler)
     ]
   },
-  // By User
+  open: false,
   browser: 'chrome',
   minify: true,
-  host: ip,
-  port: paths.port,
-  cors: true,
-  notify: false
+  port,
+  notify: true,
+  files: ['public/*.html']
 });

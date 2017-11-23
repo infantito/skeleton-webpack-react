@@ -4,8 +4,8 @@ React-webpack2-skeleton is a lightweight React boilerplate that uses Webpack2. u
 
 ## Requirement
 
-- Node `^6.0.0`
-- yarn `>= ^0.2x.x` or npm `>= ^3.x.x` 
+- Node `^6.x.x`
+- yarn `>= ^1.x.x` or npm `>= ^3.x.x` 
 
 ## Getting started
 
