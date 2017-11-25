@@ -17,6 +17,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
     "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-dynamic-import": "6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-regenerator": "^6.26.0",
@@ -24,7 +25,6 @@
     "babel-plugin-which-builtins": "^0.0.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-react-app": "^3.1.0",
     "babel-runtime": "^6.26.0",
     "browser-sync": "^2.18.13",
     "cross-env": "^5.0.5",
@@ -64,8 +64,8 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "react": "^16.1.0",
-    "react-dom": "^16.1.0"
+    "react": "16.1.1",
+    "react-dom": "16.1.1"
   },
   "browserslist": [
     "last 2 version",

@@ -71,6 +71,6 @@ module.exports = {
       context,
       'node_modules'
     ],
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.css', '.scss', '.pcss', '.json']
   }
 };

@@ -4,23 +4,28 @@ select {
   background-color: transparent;
   border: 0;
   border-radius: 0;
-  outline: 0;
+  outline: none;
+}
+
+select {
+  &::-ms-expand {
+    display: none;
+  }
 }
 
 ::-webkit-input-placeholder {
-  color: #888;
-  font-family: "Arial";
+  color: var(--color-placeholder);
+  font-family: var(--font-text);
   opacity: 1;
 }
 
-::-moz-placeholder,
-input::-moz-placeholder {
-  color: #888;
-  font-family: "Arial";
+::-moz-placeholder {
+  color: var(--color-placeholder);
+  font-family: var(--font-text);
   opacity: 1;
 }
 
 :-ms-input-placeholder {
-  color: #888;
-  font-family: "Arial";
+  color: var(--color-placeholder);
+  font-family: var(--font-text);
 }

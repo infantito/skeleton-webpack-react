@@ -1,23 +1,23 @@
-body, html {
+@import '../utils/_variables.pcss';
+
+body,
+html {
   height: 100%;
 }
 
 body {
-  &, h1 {
-    margin: 0;
-  }
-  text-align: center;
-  background-image: url(../images/image_big.png);
-  background-position: center center;
-  background-size: contain;
-  background-repeat: repeat;
+  align-items: center;
+  background-image: linear-gradient(
+    to right,
+    var(--color-dark),
+    var(--color-blue),
+    var(--color-dark)
+  );
   display: flex;
   justify-content: center;
-  align-items: center;
-}
+  text-align: center;
 
-div:matches(:global(#root)) {
-  &:hover {
-    border: 4px solid #9d9c;
+  * {
+    box-sizing: border-box;
   }
 }

@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
-import Style from '../styles/components/_Button.pcss';
+import ButtonStyle from '../styles/components/_Button.pcss';
 
 export default class Button extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.onClickCounter = this.onClickCounter.bind(this);
+    this.onAttempt = this.onAttempt.bind(this);
   }
 
-  onClickCounter() {
-    // onClickCounter = () => {
-    const bar = () => 'baz';
-    let test = { a: 1, b: 2, e: 2.5 };
-    console.log({ c: 3, d: 4, ...test });
-    console.log(Math.trunc(test.e));
+  onAttempt() {
+    return this;
   }
 
   render() {
     return (
-      <input
-        type="button"
-        value="Click me"
-        className={Style.button}
-        onClick={this.onClickCounter}
-      />
+      <div className={ButtonStyle.root__form__button}>
+        <button
+          type={this.props.type}
+          className={ButtonStyle.button}
+          onClick={this.onAttempt}
+        >
+          {this.props.value}
+        </button>
+      </div>
     );
   }
 }

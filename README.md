@@ -1,6 +1,6 @@
 # Skeleton-Webpack-React
 
-React-webpack2-skeleton is a lightweight React boilerplate that uses Webpack2. url-loader, postcss-loader, image-webpack-loader, babel-preset-env and react-hot-loader have been configured to this project by default.
+React-webpack2-skeleton is a lightweight React boilerplate that uses Webpack3. url-loader, postcss-loader, image-webpack-loader, babel-preset-env and react-hot-loader have been configured to this project by default.
 
 ## Requirement
 
@@ -12,7 +12,7 @@ React-webpack2-skeleton is a lightweight React boilerplate that uses Webpack2. u
 First, clone the project:
 
 ```bash
-$ git clone git@github.com:infantito/skeleton-react-webpack.git <project-name>
+$ git clone git@github.com:infantito/skeleton-webpack-react.git <project-name>
 $ cd <project-name>
 ```
 
@@ -54,23 +54,14 @@ You can execute the scripts below by `yarn run <script>` or `npm run <script>`.
 
 <summary><strong>Issue</strong></summary>
 <p>- https://github.com/tcoopman/image-webpack-loader#libpng-issues</p>
-
-<summary><strong>Install-Requirements</strong></summary>
-<p>Editorconfig</p>
-<p>SublimeLinter</p>
-<p>SublimeLinter-contrib-eslint</p>
-<p>SublimeLinter-contrib-stylelint</p>
-<p>Theme-Scheme for ES6</p>
+<p>- https://github.com/tomasAlabes/stylefmt-loader/issues/10</p>
+<p>- HMR doesn't work on IE/Edge</p>
 
 <summary><strong>Sadly</strong></summary>
 
-<p>Lacks Code-Splitting</p>
-<p>Code-Splitting to React-Router (React-Router-Dom)</p>
-<p>Only pass methods used from babel-polyfill</p>
+<p>https://github.com/diegohaz/arc</p>
 <p>Research about gzipped</p>
-<p>Fix Paths [../../]</p>
-<p>Fix paths at development IP/localhost [without that]</p>
-<p>Fix IP like localhost [0.0.0.0]</p>
+<p>Babel 7</p>
 
 #### A little help
 * https://github.com/velopert/react-webpack2-skeleton

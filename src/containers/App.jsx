@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Hello from '../components/Hello.jsx';
-import Button from '../components/Button.jsx';
-import ImageNode from '../components/ImageNode.jsx';
-import Style from '../styles/components/_Image.pcss';
+import Title from '../components/Title';
+import Form from './Form';
+import Style from '../styles/components/_Form.pcss';
 
 class App extends Component {
   constructor(props) {
@@ -10,30 +9,25 @@ class App extends Component {
 
     this.state = { number: 0 };
 
-    // This binding is necessary to make `this` work in the callback
     this.onCounter = this.onCounter.bind(this);
   }
 
   onCounter() {
-    let text = 'abcde';
-    let test = { a: 1, b: 2 };
-    let result = 4 ** test.b;
-    this.setState({ number: this.state.number + 1 });
-    console.log({ c: 3, d: 4, ...test });
-    console.log(text.includes('c'));
-    console.log(result);
+    return this.state.number;
   }
 
   render() {
     return (
-      <section id={Style.root__section}>
-        <Hello
-          name={`React with Webpack2 (${this.state.number})`}
-          onCounter={this.onCounter}
-        />
-        <Button />
-        <ImageNode />
-      </section>
+      <div className={Style.root__boxcontainer}>
+        <div className={Style.root__boxcontainer__form}>
+          <div className={Style.root__form__title}>
+            <Title name={this.state.number} />
+          </div>
+          <div className={Style.root__form__container}>
+            <Form />
+          </div>
+        </div>
+      </div>
     );
   }
 }

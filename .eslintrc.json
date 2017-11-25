@@ -39,7 +39,17 @@
      */
     "no-shadow": [2, {
       "builtinGlobals": true,
-      "allow": ["require", "self", "name", "module"]
+      "hoist": "all",
+      "allow": [
+        "require",
+        "self",
+        "name",
+        "module",
+        "resolve",
+        "reject",
+        "done",
+        "cb"
+      ]
     }],
     "no-unused-vars": [2, {
       "vars": "all",
@@ -122,12 +132,13 @@
     /**
      * Import
      */
-    "import/extensions": ["error", { "jsx": "always", "scss": "always", "pcss": "always", "css": "always" }],
+    "import/extensions": ["error", { "jsx": "never", "scss": "always", "pcss": "always", "css": "always" }],
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": true, "peerDependencies": false}],
 
     /**
      * JSX
      */
+    "react/no-array-index-key": 0,
     "react/jsx-closing-bracket-location": [2, {
       "location": "tag-aligned"
     }],
