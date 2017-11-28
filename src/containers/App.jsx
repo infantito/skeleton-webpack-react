@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Title from '../components/Title';
 import Form from './Form';
+
+import '../styles/style.pcss';
 import Style from '../styles/components/_Form.pcss';
 
 class App extends Component {

@@ -16,11 +16,6 @@ $ git clone git@github.com:infantito/skeleton-webpack-react.git <project-name>
 $ cd <project-name>
 ```
 
-If you do not need react-hot-loader feature, you can checkout the `light` branch.
-```bash
-$ git checkout light
-```
-
 Then, install the dependencies. It is recommended to use Yarn, (because it is blazing fast). You can still use npm as well.
 
 ```bash

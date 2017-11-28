@@ -46,7 +46,7 @@ browserSync({
       webpackHotMiddleware(bundler)
     ]
   },
-  open: false,
+  open: true,
   browser: 'chrome',
   minify: true,
   port,

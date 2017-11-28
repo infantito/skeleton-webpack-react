@@ -9,13 +9,12 @@ const {
   context,
   images,
   script,
-  style,
   vendor
 } = require('./paths');
 
 module.exports = webpackMerge(baseConfig, {
   entry: {
-    app: [script, style],
+    app: [script],
     vendor
   },
   output: {
@@ -113,7 +112,7 @@ module.exports = webpackMerge(baseConfig, {
       */
       {
         enforce: 'pre',
-        test: /\.(jsx?|json)$/,
+        test: /\.jsx?$/,
         include: context,
         exclude: [/node_modules/],
         loader: 'prettier-loader',

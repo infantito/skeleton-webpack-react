@@ -7,19 +7,17 @@ const {
   build,
   context,
   images,
-  script,
-  style
+  script
 } = require('./paths');
 
 module.exports = webpackMerge(baseConfig, {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-source-map',
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
     'webpack/hot/only-dev-server',
     'webpack-hot-middleware/client',
-    script,
-    style
+    script
   ],
   output: {
     path: build,
